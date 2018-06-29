@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "declaration": false,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "newLine": "LF",
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "sourceMap": true,
+    "skipLibCheck": true, // Verify
+    "strictNullChecks": true,
+    "strict": true,
+    "target": "es6",
+    "jsx": "react"
+  }
+
+}
