@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "mocha --compilers js:babel/register",
+    "test": "mocha --require=ts-node/register $(npm run -s tsfiles | grep \\.test\\.ts$)",
     "tsfiles": "git ls-files | grep '.ts$'"
   },
   "dependencies": {
