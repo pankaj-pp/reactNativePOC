@@ -3,59 +3,46 @@
  * https://github.com/facebook/react-native
  * @flow
  */
-
+import {Hoe} from 'hoe'
+import * as R from 'ramda'
 import * as React from 'react'
-import {StyleSheet, Text, View} from 'react-native'
-import {matchActionR, matchActionC} from '../../lib/component'
+import {Button, Text, View} from 'react-native'
+import {matchC, matchR} from 'update-function-types'
+import {styles} from './app.styles'
 
-interface App {
-  flag: boolean
+export interface App {
+  count: number
 }
 
-interface AppParams {
+export interface AppParams {
 }
 
 const init = (): App => {
-  return  {
-    flag: false
+  return {
+    count: 0
   }
 }
 
-const update = matchActionR({
+const update = matchR({
+  inc: R.compose(R.evolve({count: R.inc}), R.nthArg(1))
 })
 
-const command = matchActionC({
-  
-})
+const command = matchC({})
 
-const view = () => {
+const view = (e: Hoe, m: App, p: AppParams) => {
   return (
     <View style={styles.container}>
       <Text style={styles.welcome}>
-        Functional Programming with React Native
+        Current Count {m.count}
       </Text>
+      <Button
+        onPress={e.of('inc').emit as () => any}
+        title= {m.count > 2 ? "inc " + m.count : "inc"}
+        color="#841584"
+      />
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'red',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-})
 
 export const app = {init, update, command, view}
 

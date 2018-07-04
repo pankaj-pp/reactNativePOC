@@ -8,10 +8,10 @@
     "noUnusedLocals": true,
     "noUnusedParameters": false,
     "sourceMap": true,
-    "skipLibCheck": true, // Verify
     "strictNullChecks": true,
     "strict": true,
     "target": "es6",
+    "skipLibCheck": true, // Verify
     "jsx": "react"
   }
 
